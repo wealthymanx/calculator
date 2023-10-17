@@ -1,0 +1,118 @@
+// Append a character to the input field
+function appendToInput(char) {
+    document.getElementById("input").value += char;
+}
+// Clear the input field
+function clearInput() {
+    document.getElementById("input").value = "";
+}
+// Calculate the result of the expression
+function calculate() {
+    const input = document.getElementById("input").value;
+    try {
+        // Evaluate input
+        const result = eval(input);
+        // Update input with calculation
+        document.getElementById("input").value = result;
+    } catch (error) {
+        // In case of error, displays "Error"
+        document.getElementById("input").value = "Error";
+    }
+}
+// Calculate array of input characters
+function calculator(input) {
+    try {
+        // Join the input characters into a single string
+        const expression = input.join("");
+        // Evaluate expression
+        const result = eval(expression);
+        return result;
+    } catch (error) {
+        // Handle errors with null
+        return null;
+    }
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Calculator</h1>
+    <input type="text" id="input" placeholder="Enter your expression">
+    <button onclick="calculate()">Calculate</button>
+    <p id="result"></p>
+   
+    <div class="calculator">
+        <div class="buttons">
+            <button onclick="appendToInput('7')">7</button>
+            <button onclick="appendToInput('8')">8</button>
+            <button onclick="appendToInput('9')">9</button>
+            <button onclick="appendToInput('+')">+</button>
+            <button onclick="appendToInput('4')">4</button>
+            <button onclick="appendToInput('5')">5</button>
+            <button onclick="appendToInput('6')">6</button>
+            <button onclick="appendToInput('-')">-</button>
+            <button onclick="appendToInput('1')">1</button>
+            <button onclick="appendToInput('2')">2</button>
+            <button onclick="appendToInput('3')">3</button>
+            <button onclick="appendToInput('*')">*</button>
+            <button onclick="appendToInput('0')">0</button>
+            <button onclick="clearInput()">C</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="appendToInput('/')">/</button>
+        </div>
+    </div>
+    <script src="calculator.js"></script>
+</body>
+</html>
+
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #e0f2f1;
+}
+
+.calculator {
+    background-color: #f3f3f3;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+}
+
+input {
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    width: 100%;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+button {
+    border: none;
+    background-color: #666;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #444;
+} 
